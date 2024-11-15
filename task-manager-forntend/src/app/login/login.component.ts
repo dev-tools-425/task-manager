@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from '../register/register.component';
 import { MatTabsModule } from '@angular/material/tabs';
 
+
 @Component({
   selector: 'app-login',
   standalone:true,
@@ -18,10 +19,12 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
+  
+
   onLogin() {
     this.authService.login({ username: this.username, password: this.password }).subscribe(
       (res: any) => {
-        debugger
+        
         localStorage.setItem('token', res.token);
         this.router.navigate(['/tasks']);
       },
@@ -30,6 +33,7 @@ export class LoginComponent {
   }
 
   register(){
+    console.log("register")
     this.router.navigate(['/register'])
   }
 }
